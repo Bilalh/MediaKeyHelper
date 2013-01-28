@@ -1,12 +1,32 @@
-# Readme 
-
-This menubar app for Mac OSX  (tested on 10.7)  allows use to assign functions to your media keys (F7,F8,F9)
-
-CC licensed 
-
-By Bilal Syed Hussain
-
-Some code is based on Popup which is BSD licensed
+MediaKeys Helper {#readmeTitle}
+=========================
+A menubar app for Mac OSX  which allow the media keys (F7,F8,F9) to be assigned version functions.
+{#description}
 
 
-The code for the media handlding is in MediaKeysApplication.m
+Install 
+-------
+* Compile and build using Xcode
+* Put the application in the Applications directory
+* Open it
+
+
+Licence
+-------
+[Apache License, Version 2.0](http://www.apache.org/licenses/ "Full details")
+
+
+Authors
+-------
+* Bilal Syed Hussain
+
+
+Notes 
+------
+* The code for the media key handling is in `MediaKeys.m``
+
+
+Other Sources
+-------------
+* Some code is based on Popup which is BSD licensed
+* Includes SPMediaKeyTap which is BSD licensed

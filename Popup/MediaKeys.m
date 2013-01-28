@@ -2,7 +2,8 @@
 //  MediaKeys.m
 //  MediaKeys Helper Plus
 //
-//  Created by Bilal Syed Hussain on 30/12/2012.
+//  Copyright 2012 Bilal Syed Hussain
+//  Licensed under the Apache License, Version 2.0
 //
 //
 
@@ -13,7 +14,7 @@
 + (void) toogle
 {
     NSString *s;
-    if ([self isFluidAppRunning]){
+    if ([self isFluidAppRunning]){ // playpause.scpt
         s = @"osascript -e \'activate application \"Anime\"\' -e \'tell application \"System Events\"\' -e \'\' -e \'set boundss to \"\"\' -e \'tell application \"Anime\"\' -e \'set boundss to get bounds of window 1\' -e \'end tell\' -e \'\' -e \'tell process \"Anime\"\' -e \'set com to \"/usr/local/bin/cliclick  \" & (get (item 1 of boundss) + 38) & \" \" & (get (item 4 of boundss) - 15)\' -e \'do shell script com\' -e \'end tell\' -e \'\' -e \'\' -e \'\' -e \'end tell\'";
     }else if ([self isMPlayerRunning] || [self processIsRunning:@"mplayer2"]){
         s = @"echo 'pause' > ~/.mplayer/pipe";
@@ -27,7 +28,7 @@
 + (void) next
 {
     NSString *s;
-    if ([self isFluidAppRunning] ){
+    if ([self isFluidAppRunning] ){ // clickhide.scpt
         s =@"osascript -e \'activate application \"Anime\"\' -e \'tell application \"System Events\"\' -e \'\' -e \'set boundss to \"\"\' -e \'tell application \"Anime\"\' -e \'set boundss to get bounds of window 1\' -e \'end tell\' -e \'\' -e \'tell process \"Anime\"\' -e \'set com to \"/usr/local/bin/cliclick -r \" & (get (item 1 of boundss) + 38) & \" \" & (get (item 4 of boundss) - 15)\' -e \'do shell script com\' -e \'\' -e \'keystroke \"h\" using {command down}\' -e \'end tell\' -e \'\' -e \'end tell\'";
     }else if ([self isMPlayerRunning] || [self processIsRunning:@"mplayer2"]){
         s = @"echo 'pt_step 1' > ~/.mplayer/pipe";
@@ -39,7 +40,7 @@
 + (void) previous
 {
     NSString *s;
-    if ([self isFluidAppRunning]){
+    if ([self isFluidAppRunning]){ // back.scpt
         s = @"osascript -e \'activate application \"Anime\"\' -e \'tell application \"System Events\"\' -e \'\' -e \'set boundss to \"\"\' -e \'tell application \"Anime\"\' -e \'set boundss to get bounds of window 1\' -e \'end tell\' -e \'\' -e \'tell process \"Anime\"\' -e \'set com to \"/usr/local/bin/cliclick \" & (get (item 1 of boundss) + 15) & \" \" & (get (item 4 of boundss) - 15)\' -e \'do shell script com\' -e \'end tell\' -e \'\' -e \'\' -e \'\' -e \'end tell\'";
     }else if ([self isMPlayerRunning] || [self processIsRunning:@"mplayer2"]){
         s = @"echo 'pt_step -1' > ~/.mplayer/pipe";

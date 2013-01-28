@@ -36,6 +36,7 @@
 		92AD21D9168FC24F00343263 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		92AD21DA168FC24F00343263 /* SPMediaKeyTap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPMediaKeyTap.h; sourceTree = "<group>"; };
 		92AD21DB168FC24F00343263 /* SPMediaKeyTap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPMediaKeyTap.m; sourceTree = "<group>"; };
+		92D9DE2916B71C980078C46C /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		92E2587515C48DF400CD625F /* cliclick */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = cliclick; sourceTree = "<group>"; };
 		92E258AE15C4975300CD625F /* playpause.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = playpause.scpt; sourceTree = "<group>"; };
 		92E258AF15C497C100CD625F /* back.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = back.scpt; sourceTree = "<group>"; };
@@ -117,7 +118,7 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
-				9269144D168FC3110044F038 /* Carbon.framework */,
+				92D9DE2916B71C980078C46C /* LICENSE.txt */,
 				92AD21D4168FC24F00343263 /* contrib */,
 				DD4F7C0E13C30F9F00825C6E /* Sources */,
 				DD4F7C2813C3123E00825C6E /* User Interface */,
@@ -145,6 +146,7 @@
 		DD4F7C0713C30F9F00825C6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9269144D168FC3110044F038 /* Carbon.framework */,
 				DD4F7C0B13C30F9F00825C6E /* AppKit.framework */,
 				DD4F7C0C13C30F9F00825C6E /* CoreData.framework */,
 				DD4F7C0D13C30F9F00825C6E /* Foundation.framework */,

@@ -1,6 +1,3 @@
-//
-// Prefix header for all source files of the 'Popup' target in the 'Popup' project
-//
 
 #ifdef __OBJC__
 

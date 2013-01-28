@@ -4,7 +4,8 @@
 //  MediaKeys.m
 //  MediaKeys Helper Plus
 //
-//  Created by Bilal Syed Hussain on 30/12/2012.
+//  Copyright 2012 Bilal Syed Hussain
+//  Licensed under the Apache License, Version 2.0
 //
 
 @implementation ApplicationDelegate
