@@ -16,7 +16,7 @@
     NSString *s;
     if ([self isFluidAppRunning]){ // playpause.scpt
         s = @"osascript -e \'activate application \"Anime\"\' -e \'tell application \"System Events\"\' -e \'\' -e \'set boundss to \"\"\' -e \'tell application \"Anime\"\' -e \'set boundss to get bounds of window 1\' -e \'end tell\' -e \'\' -e \'tell process \"Anime\"\' -e \'set com to \"/usr/local/bin/cliclick  \" & (get (item 1 of boundss) + 38) & \" \" & (get (item 4 of boundss) - 15)\' -e \'do shell script com\' -e \'end tell\' -e \'\' -e \'\' -e \'\' -e \'end tell\'";
-    }else if ([self isMPlayerRunning] || [self processIsRunning:@"mplayer2"]){
+    }else if ([self isMPlayerRunning] || [self processIsRunning:@"mpv"] || [self processIsRunning:@"mplayer2"]){
         s = @"echo 'pause' > ~/.mplayer/pipe";
     }else{
         return;
@@ -30,7 +30,7 @@
     NSString *s;
     if ([self isFluidAppRunning] ){ // clickhide.scpt
         s =@"osascript -e \'activate application \"Anime\"\' -e \'tell application \"System Events\"\' -e \'\' -e \'set boundss to \"\"\' -e \'tell application \"Anime\"\' -e \'set boundss to get bounds of window 1\' -e \'end tell\' -e \'\' -e \'tell process \"Anime\"\' -e \'set com to \"/usr/local/bin/cliclick -r \" & (get (item 1 of boundss) + 38) & \" \" & (get (item 4 of boundss) - 15)\' -e \'do shell script com\' -e \'\' -e \'keystroke \"h\" using {command down}\' -e \'end tell\' -e \'\' -e \'end tell\'";
-    }else if ([self isMPlayerRunning] || [self processIsRunning:@"mplayer2"]){
+    }else if ([self isMPlayerRunning] || [self processIsRunning:@"mpv"] || [self processIsRunning:@"mplayer2"]){
         s = @"echo 'pt_step 1' > ~/.mplayer/pipe";
     }
     
@@ -42,7 +42,7 @@
     NSString *s;
     if ([self isFluidAppRunning]){ // back.scpt
         s = @"osascript -e \'activate application \"Anime\"\' -e \'tell application \"System Events\"\' -e \'\' -e \'set boundss to \"\"\' -e \'tell application \"Anime\"\' -e \'set boundss to get bounds of window 1\' -e \'end tell\' -e \'\' -e \'tell process \"Anime\"\' -e \'set com to \"/usr/local/bin/cliclick \" & (get (item 1 of boundss) + 15) & \" \" & (get (item 4 of boundss) - 15)\' -e \'do shell script com\' -e \'end tell\' -e \'\' -e \'\' -e \'\' -e \'end tell\'";
-    }else if ([self isMPlayerRunning] || [self processIsRunning:@"mplayer2"]){
+    }else if ([self isMPlayerRunning] || [self processIsRunning:@"mpv"] || [self processIsRunning:@"mplayer2"]){
         s = @"echo 'pt_step -1' > ~/.mplayer/pipe";
     }
     
@@ -57,7 +57,8 @@
 
 + (BOOL) isMPlayerRunning
 {
-    return [self isAppRunning:@"com.google.code.mplayerosx-builds.git"];
+    return [self isAppRunning:@"com.google.code.mplayerosx-builds.git"]
+        || [self isAppRunning:@"org.mpv-player.standalone"];
 }
 
 // Method to see if fluid is running
