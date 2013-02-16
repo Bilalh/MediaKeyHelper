@@ -41,23 +41,44 @@
 	BOOL keyIsPressed = (((keyFlags & 0xFF00) >> 8)) == 0xA;
 	int keyRepeat = (keyFlags & 0x1);
 	
+    NSUInteger flags =  [event modifierFlags];
+    NSLog(@"%lu %lu", flags,  flags & NSCommandKeyMask);
+    
+    
 	if (keyIsPressed) {
 		NSString *debugString = [NSString stringWithFormat:@"%@", keyRepeat?@", repeated.":@"."];
 		switch (keyCode) {
 			case NX_KEYTYPE_PLAY:{
-				debugString = [@"Play/pause pressed" stringByAppendingString:debugString];
-                [MediaKeys toogle];
+                if (flags & NSCommandKeyMask){
+                    debugString = [@"cmd + Play/pause pressed" stringByAppendingString:debugString];
+                    [MediaKeys toogleWithCommand];
+                }else{
+                    debugString = [@"Play/pause pressed" stringByAppendingString:debugString];
+                    [MediaKeys toogle];
+                }
                 break;
             }
 				
 			case NX_KEYTYPE_FAST:
-				debugString = [@"Ffwd pressed" stringByAppendingString:debugString];
-                [MediaKeys next];
+
+                if (flags & NSCommandKeyMask){
+                    debugString = [@"shift + Ffwd pressed" stringByAppendingString:debugString];
+                    [MediaKeys nextWithShift];
+                }else{
+                    debugString = [@"Ffwd pressed" stringByAppendingString:debugString];
+                    [MediaKeys next];
+                }
 				break;
 				
 			case NX_KEYTYPE_REWIND:
-				debugString = [@"Rewind pressed" stringByAppendingString:debugString];
-                [MediaKeys previous];
+
+                if (flags & NSCommandKeyMask){
+                    debugString = [@"shift + Rewind pressed" stringByAppendingString:debugString];
+                    [MediaKeys previousWithShift];
+                }else{
+                    debugString = [@"Rewind pressed" stringByAppendingString:debugString];
+                    [MediaKeys previous];
+                }
 				break;
 			default:
 				debugString = [NSString stringWithFormat:@"Key %d pressed%@", keyCode, debugString];

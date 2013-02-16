@@ -2,7 +2,8 @@
 //  MediaKeys.h
 //  MediaKeys Helper Plus
 //
-//  Created by Bilal Syed Hussain on 30/12/2012.
+//  Copyright 2012-2013 Bilal Syed Hussain
+//  Licensed under the Apache License, Version 2.0
 //
 //
 
@@ -12,6 +13,9 @@
 
 + (void) toogle;
 + (void) next;
++ (void) nextWithShift;
 + (void) previous;
++ (void) previousWithShift;
++ (void) toogleWithCommand;
 
 @end
