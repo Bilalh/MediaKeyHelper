@@ -34,7 +34,8 @@
 
 -(void)mediaKeyTap:(SPMediaKeyTap*)keyTap receivedMediaKeyEvent:(NSEvent*)event;
 {
-	NSAssert([event type] == NSSystemDefined && [event subtype] == SPSystemDefinedEventMediaKeys, @"Unexpected NSEvent in mediaKeyTap:receivedMediaKeyEvent:");
+	NSAssert([event type] == NSSystemDefined && [event subtype] == SPSystemDefinedEventMediaKeys,
+             @"Unexpected NSEvent in mediaKeyTap:receivedMediaKeyEvent:");
 	// here be dragons...
 	int keyCode = (([event data1] & 0xFFFF0000) >> 16);
 	int keyFlags = ([event data1] & 0x0000FFFF);
@@ -60,6 +61,7 @@
             }
 				
 			case NX_KEYTYPE_FAST:
+            case NX_KEYTYPE_NEXT:
 
                 if (flags & NSCommandKeyMask){
                     debugString = [@"shift + Ffwd pressed" stringByAppendingString:debugString];
@@ -71,6 +73,7 @@
 				break;
 				
 			case NX_KEYTYPE_REWIND:
+            case NX_KEYTYPE_PREVIOUS:
 
                 if (flags & NSCommandKeyMask){
                     debugString = [@"shift + Rewind pressed" stringByAppendingString:debugString];

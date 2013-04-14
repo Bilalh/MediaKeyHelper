@@ -15,6 +15,7 @@ static pascal OSStatus appSwitched (EventHandlerCallRef nextHandler, EventRef ev
 static pascal OSStatus appTerminated (EventHandlerCallRef nextHandler, EventRef evt, void* userData);
 static CGEventRef tapEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon);
 
+static NSSet *allowedKeys = nil;
 
 // Inspired by http://gist.github.com/546311
 
@@ -22,6 +23,12 @@ static CGEventRef tapEventCallback(CGEventTapProxy proxy, CGEventType type, CGEv
 
 #pragma mark -
 #pragma mark Setup and teardown
++(void)initialize
+{
+    allowedKeys = [[NSSet alloc] initWithArray:@[@NX_KEYTYPE_REWIND,@NX_KEYTYPE_PLAY,@NX_KEYTYPE_FAST, @NX_KEYTYPE_PREVIOUS, @NX_KEYTYPE_NEXT]];
+    NSLog(@"%@",allowedKeys);
+}
+
 -(id)initWithDelegate:(id)delegate
 {
 	_delegate = delegate;
@@ -149,8 +156,9 @@ static CGEventRef tapEventCallback(CGEventTapProxy proxy, CGEventType type, CGEv
 #pragma mark -
 #pragma mark Event tap callbacks
 
-// Note: method called on background thread
 
+
+// Note: method called on background thread
 static CGEventRef tapEventCallback2(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon)
 {
 	SPMediaKeyTap *self = refcon;
@@ -177,9 +185,11 @@ static CGEventRef tapEventCallback2(CGEventTapProxy proxy, CGEventType type, CGE
 		return event;
 	
 	int keyCode = (([nsEvent data1] & 0xFFFF0000) >> 16);
-	if (keyCode != NX_KEYTYPE_PLAY && keyCode != NX_KEYTYPE_FAST && keyCode != NX_KEYTYPE_REWIND)
-		return event;
-	
+	if (![allowedKeys containsObject:@(keyCode) ]){
+        return event;
+    }
+    NSLog(@"keycode %ld", keyCode);
+    
 	if (![self shouldInterceptMediaKeyEvents])
 		return event;
 	
