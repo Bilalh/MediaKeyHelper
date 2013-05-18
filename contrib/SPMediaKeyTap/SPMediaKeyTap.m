@@ -26,7 +26,7 @@ static NSSet *allowedKeys = nil;
 +(void)initialize
 {
     allowedKeys = [[NSSet alloc] initWithArray:@[@NX_KEYTYPE_REWIND,@NX_KEYTYPE_PLAY,@NX_KEYTYPE_FAST, @NX_KEYTYPE_PREVIOUS, @NX_KEYTYPE_NEXT]];
-    NSLog(@"%@",allowedKeys);
+    //NSLog(@"%@",allowedKeys);
 }
 
 -(id)initWithDelegate:(id)delegate
@@ -188,7 +188,7 @@ static CGEventRef tapEventCallback2(CGEventTapProxy proxy, CGEventType type, CGE
 	if (![allowedKeys containsObject:@(keyCode) ]){
         return event;
     }
-    NSLog(@"keycode %ld", keyCode);
+    //NSLog(@"keycode %ld", keyCode);
     
 	if (![self shouldInterceptMediaKeyEvents])
 		return event;

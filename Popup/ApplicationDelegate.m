@@ -43,7 +43,7 @@
 	int keyRepeat = (keyFlags & 0x1);
 	
     NSUInteger flags =  [event modifierFlags];
-    NSLog(@"%lu %lu", flags,  flags & NSCommandKeyMask);
+//   NSLog(@"%lu %lu", flags,  flags & NSCommandKeyMask);
     
     
 	if (keyIsPressed) {

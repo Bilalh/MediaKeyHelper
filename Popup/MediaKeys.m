@@ -149,7 +149,7 @@ static int mplayer_paused()
 }
 + (BOOL) isMPVRunning
 {
-    return [self isAppRunning:@"org.mpv-player.standalone"];
+    return [self isAppRunning:@"io.mpv"];
 }
 
 // Method to see if fluid is running
